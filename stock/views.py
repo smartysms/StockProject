@@ -77,7 +77,7 @@ class LogoutView(View):
         return HttpResponseRedirect(reverse(settings.LOGIN_URL))
 
 
-# @method_decorator(check_market_time, name='dispatch')
+@method_decorator(check_market_time, name='dispatch')
 @method_decorator(login_required, name='dispatch')
 class StockTradeView(CreateView):
     model = UserPlaceTrade
