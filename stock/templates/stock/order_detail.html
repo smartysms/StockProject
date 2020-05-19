@@ -1,0 +1,127 @@
+{% extends 'stock/main.html' %}
+{% load static %}
+
+{% block content %}
+<script type="text/javascript">
+    {% autoescape off %}
+
+    var pending_data = {{ pending_order }}
+
+    var history_data = {{ history_order }}
+
+    {% endautoescape %}
+</script>
+<style>
+    .panel-group .panel {
+        border-radius: 0;
+        box-shadow: none;
+        border-color: black;
+    }
+
+    .panel-default>.panel-heading {
+        padding: 0;
+        border-radius: 0;
+        color: #212121;
+        background-color: #ffe699;
+        border-color: #EEEEEE;
+    }
+
+    .panel-title {
+        font-size: 14px;
+    }
+
+    .panel-title>a {
+        display: block;
+        padding: 15px;
+        text-decoration: none;
+    }
+
+    .more-less {
+        float: right;
+        color: #212121;
+    }
+
+    .panel-default>.panel-heading+.panel-collapse>.panel-body {
+        border-top-color: #ff9999;
+    }
+</style>
+
+<div class="container">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                        <i class="more-less glyphicon glyphicon-plus"></i>
+                        Pending Order Detail
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <table id="pending_table" class="table" style="width:80%">
+                        <thead class="thead-dark">
+                            <th class="none"></th>
+                            <th>Stock Name</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                            <th>Sale Type</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Order on</th>
+                            <th>Modify Order</th>
+                            <th>Cancel Order</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <i class="more-less glyphicon glyphicon-plus"></i>
+                        Order History
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <table id="history_table" class="table table-bordered table-striped" style="width:80%">
+                        <thead class="thead-dark">
+                            <th>Stock Name</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                            <th>Sale Type</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Order on</th>
+                        </thead>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div><!-- panel-group -->
+
+    <div class="row">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+<script src="{%static 'stock/js/order_page.js' %}"></script>
+{% endblock %}

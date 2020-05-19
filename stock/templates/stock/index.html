@@ -1,0 +1,55 @@
+{% extends "stock/main.html" %} {% load static %}
+<!-- START SECTION BANNER -->
+{% load static %} {% block content %}
+
+<!-- END SECTION BANNER -->
+<script type="text/javascript">
+  {% autoescape off %}
+
+  var stock = {{ stock_data }}
+  console.log(stock)
+  console.log(typeof (stock))
+  {% endautoescape %}
+</script>
+<!-- START SECTION FEATURE -->
+<section class="pb_70">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="heading_s3">
+          <h2>Market Table</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <table id="stock_table">
+              <thead>
+                <th class="none"></th>
+                <th>Stock Name</th>
+                <th>Total Stock</th>
+                <th>Price</th>
+                <th>Updated At</th>
+                <th>Action {% csrf_token %}</th>
+              </thead>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              {{ message }}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{%static 'stock/js/basic_script.js' %}"></script>
+{% endblock %}
+<!-- END SECTION ABOUT US -->

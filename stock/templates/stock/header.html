@@ -1,0 +1,63 @@
+{% load static %}
+<!-- START HEADER -->
+<header>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ">
+                    {% if request.user.is_authenticated %}
+                    <ul class="nav justify-content-left">
+                        <li class="nav-item">
+                            <!-- <a class="nav-link {% if request.resolver_match.view_name == 'Website_Home' %} active {% endif %}"
+                                href="/">Hello </a> -->
+
+                            <div class="badge badge-primary text-wrap" style="width: 6rem;">
+                                {% if request.user.first_name %}
+                                Hello {{request.user.first_name}}
+                                {% else %}
+                                Hello {{request.user.username}}
+                                {% endif %}
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.view_name == 'Order_details' %}active {%endif%}"
+                                href="/order_detail">Order Detail</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.view_name == 'stock_holding' %}active {%endif%}"
+                                href="/user_holding">My Stock Holding</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.view_name == 'user_profile' %}active {%endif%}"
+                                href="/user_profile/{{request.user.id}}">Profile</a>
+                        </li>
+                        {% endif %}
+
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-right">
+                            <a class="nav-link {% if request.resolver_match.view_name == 'login' %}active {% endif %}"
+                                href="/login">Login</a>
+                        </li>
+                        <li class="nav-item navbar-right">
+                            <a class="nav-link {% if request.resolver_match.view_name == 'register' %}active {% endif %}"
+                                href="/register">Register</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item navbar-right">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- START HEADER -->

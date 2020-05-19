@@ -1,0 +1,14 @@
+<!-- Include Top -->
+{% include "stock/top.html" %}
+<!-- Include Header -->
+{% include "stock/header.html" %}
+
+<!-- Include Page Content -->
+<div id="loader_div" class="loader_div"></div>
+{% load static %}
+<!-- Template to be included here-->
+{% block content %}
+
+{% endblock %}
+
+{% include "stock/footer.html" %}

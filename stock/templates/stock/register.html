@@ -1,0 +1,32 @@
+{% extends "stock/main.html" %}
+
+
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- START SECTION EVENT -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="lr_form text-center mt-0">
+                    <div class="heading_s3 heading_uppercase">
+                        <h4>CREATE AN ACCOUNT</h4>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy}}
+
+                        <div class="form-group">
+                            <input type="submit" class="btn-primary btn-lg" value="Register" />
+                        </div>
+                    </form>
+                </div>
+                <div class="form-note text-center">Already have an account? <a href="/login">Login Here!</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- END SECTION EVENT -->
+{% endblock %}
