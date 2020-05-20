@@ -8,7 +8,7 @@ def check_market_time(function):
     def wrap(request, *args, **kwargs):
         value = function(request, *args, **kwargs)
         start_time = time(9, 15, 00).replace(microsecond=0)
-        end_time = time(15, 35, 00).replace(microsecond=0)
+        end_time = time(15, 30, 00).replace(microsecond=0)
         current_time = datetime.now().time().replace(microsecond=0)
 
         if current_time >= start_time and current_time <= end_time:

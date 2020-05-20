@@ -69,7 +69,7 @@ class RegisterUser(View):
             'username'), password=form.cleaned_data.get('password1'))
         if user is not None:
             return auth_login(request, user)
-
+    
 
 class LogoutView(View):
     def get(self, request):

@@ -9,7 +9,6 @@ from stock.models import UserStockHolding, UserPlaceTrade, TradeTransaction, Sto
 from StockProject.constants import ORDER_STATUS, SALE_TYPE, USER_ACTION
 from celery.schedules import crontab
 import time
-from celery.task.control import inspect
 from datetime import datetime
 
 
@@ -51,6 +50,7 @@ def after_order_placed(t_id, u_id):
 
             c_id = order_obj.user_id
 
+        time.sleep(20)
         qty_fullfill = original_qty = order_obj.quantity
         cost = 0
         for obj in type_obj:
@@ -104,6 +104,7 @@ def update_details_after_share_buy(trade_id, u_id):
             stock_id=trade_obj.stock_id, occupied_quantity=trade_obj.quantity, user_id=u_id)
 
     # updating status in trade obj
+    stock_obj.set_stock_after_buy(bid_hold_obj.occupied_quantity)
     trade_obj.status = ORDER_STATUS[0][0]
     trade_obj.save()
 

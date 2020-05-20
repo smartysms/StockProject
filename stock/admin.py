@@ -18,16 +18,16 @@ class UserHoldingAdmin(ModelAdmin):
     list_filter = ('user', 'stock')
 
     def get_stock_name(self, obj):
-        return obj.stock.stock_name
+        return obj.stock.stock_Name
 
     def get_user_name(self, obj):
         return str(obj.user.first_name) + " "+str(obj.user.last_name)
 
-    def has_change_permission(self, request, obj=None):
-        return False
+    # def has_change_permission(self, request, obj=None):
+    #     return False
 
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 @register(models.UserPlaceTrade)
