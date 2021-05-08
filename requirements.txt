@@ -17,7 +17,7 @@ django-material-admin==1.7.2
 django-next-prev==1.0.1
 django-timezone-field==4.0
 dnspython==1.16.0
-eventlet==0.25.2
+eventlet==0.31.0
 flower==0.9.4
 gevent==20.5.0
 ghettoq==0.4.5
