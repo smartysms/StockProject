@@ -18,7 +18,7 @@ django-next-prev==1.0.1
 django-timezone-field==4.0
 dnspython==1.16.0
 eventlet==0.25.2
-flower==0.9.4
+flower==1.2.0
 gevent==20.5.0
 ghettoq==0.4.5
 greenlet==0.4.15
